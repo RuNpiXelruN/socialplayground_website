@@ -1,0 +1,254 @@
+.carousel-wrapper {
+	position: relative;
+	overflow: hidden;
+
+	.carousel-nav {
+		position: absolute;
+		z-index: 2;
+		left: 0;
+		bottom: 0;
+
+		width: 100%;
+
+		text-align: center;
+	}
+
+	.carousel-prev,
+	.carousel-next {
+		position: absolute;
+		z-index: 2;
+		top: 50%;
+	}
+
+	.carousel-prev {
+		left: 0;
+	}
+
+	.carousel-next {
+		right: 0;
+	}
+}
+
+.carousel {
+	position: relative;
+	width: 100%;
+	height: 100%;
+
+	-webkit-perspective: 1200px;
+	-moz-perspective: 1200px;
+	perspective: 1200px;
+
+	.item {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+
+		visibility: hidden;
+		overflow: hidden;
+
+		// -webkit-backface-visibility: hidden;
+		// -moz-backface-visibility: hidden;
+		// backface-visibility: hidden;
+
+		-webkit-transform: translate3d(0, 0, 0);
+		-moz-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+		
+		-webkit-transform-style: preserve-3d;
+		-moz-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+	}
+}
+
+.carousel .visible-item,
+.no-js .carousel .item {
+	visibility: visible;
+}
+
+.animate-slide-moveToLeft {
+	-webkit-animation: moveToLeft .6s ease both;
+	-moz-animation: moveToLeft .6s ease both;
+	animation: moveToLeft .6s ease both;
+}
+.animate-slide-moveFromLeft {
+	-webkit-animation: moveFromLeft .6s ease both;
+	-moz-animation: moveFromLeft .6s ease both;
+	animation: moveFromLeft .6s ease both;
+}
+.animate-slide-moveToRight {
+	-webkit-animation: moveToRight .6s ease both;
+	-moz-animation: moveToRight .6s ease both;
+	animation: moveToRight .6s ease both;
+}
+.animate-slide-moveFromRight {
+	-webkit-animation: moveFromRight .6s ease both;
+	-moz-animation: moveFromRight .6s ease both;
+	animation: moveFromRight .6s ease both;
+}
+
+@-webkit-keyframes moveToLeft {
+	to { -webkit-transform: translateX(-100%); }
+}
+@-moz-keyframes moveToLeft {
+	to { -moz-transform: translateX(-100%); }
+}
+@keyframes moveToLeft {
+	to { transform: translateX(-100%); }
+}
+
+@-webkit-keyframes moveFromLeft {
+	from { -webkit-transform: translateX(-100%); }
+}
+@-moz-keyframes moveFromLeft {
+	from { -moz-transform: translateX(-100%); }
+}
+@keyframes moveFromLeft {
+	from { transform: translateX(-100%); }
+}
+
+@-webkit-keyframes moveToRight {
+	to { -webkit-transform: translateX(100%); }
+}
+@-moz-keyframes moveToRight {
+	to { -moz-transform: translateX(100%); }
+}
+@keyframes moveToRight {
+	to { transform: translateX(100%); }
+}
+
+@-webkit-keyframes moveFromRight {
+	from { -webkit-transform: translateX(100%); }
+}
+@-moz-keyframes moveFromRight {
+	from { -moz-transform: translateX(100%); }
+}
+@keyframes moveFromRight {
+	from { transform: translateX(100%); }
+}
+
+
+
+/****************************
+Carousel Custom Style
+****************************/
+%carouselNav {
+	border: 0;
+
+	cursor: pointer;
+
+	@include opacity(0.5);
+
+	@include transition(opacity 0.4s ease);
+
+	&:hover,
+	&.active {
+		@include opacity(1);
+	}
+}
+.carousel-wrapper {
+	.carousel-page-trigger-text {
+		@extend %visuallyhidden;
+	}
+
+	$gutter: 5px;
+	.carousel-page-trigger {
+		width: 40px;
+		height: 6px;
+
+		background-color: #fff;
+
+		margin-left: $gutter;
+
+		@extend %carouselNav;
+	}
+
+	.carousel-page {
+		margin-left: -$gutter;
+	}
+
+	.carousel-nav {
+		bottom: 40px;
+	}
+
+	.carousel-prev,
+	.carousel-next {
+		padding: 15px;
+		margin: -24px 0 0 0;
+
+		background: none;
+
+		font-size: em(30px);
+		color: #fff;
+
+		@extend %carouselNav;
+	}
+
+	.carousel-prev {
+		left: 35px;
+	}
+
+	.carousel-next {
+		right: 35px;
+	}
+
+	.carousel-prev-text,
+	.carousel-next-text {
+		@extend %visuallyhidden;
+	}
+
+	.item {
+		background-color: #000;
+		background-repeat: no-repeat;
+		background-position: center top;
+		background-size: cover;
+	}
+
+	.item-caption {
+		position: relative;
+		top: 18%;
+		margin: 0 80px;
+
+		@include base-font-bold();
+		font-size: em(42px);
+		line-height: 1;
+		color: #fff;
+		text-align: center;
+		text-transform: uppercase;
+	}
+}
+
+
+@media only screen and (max-width : 1399px) {
+	.carousel-wrapper .item-caption {
+		font-size: 3vw;
+	}
+}
+
+@media only screen and (min-width : 569px) and (max-height : 799px) {
+	.carousel-wrapper .item-caption {
+		top: 140px;
+
+		font-size: 2.5vw;
+	}
+}
+
+@media only screen and (max-width : 767px) {
+	.carousel-wrapper .item-caption {
+		margin: 0 20px;
+
+		span {
+			display: block;
+		}
+	}
+}
+
+@media only screen and (max-width : 568px) {
+	.carousel-wrapper .item-caption {
+		top: 20%;
+
+		font-size: 4.5vw;
+	}
+}

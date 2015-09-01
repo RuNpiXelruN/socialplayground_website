@@ -1,0 +1,60 @@
+@mixin setIcon($iconSize) {
+	width: $iconSize;
+	height: $iconSize;
+	margin-left: -$iconSize/2;
+
+	background: #ffffff;
+
+	font-size: $iconSize/2;
+	line-height: $iconSize;
+}
+
+#clients {
+	.page-section-header{
+		position: relative;
+
+		background-color: $blue;
+
+		color: #fff;
+
+		.page-section-icon {
+			position: absolute;
+			display: block;
+			top: 0;
+			left: 50%;
+			
+			@include setIcon(80px);
+			color: $blue;
+		}
+	}
+}
+
+#clients-logo-list {
+	li {
+		@include inline-block();
+		@include box-sizing(border-box);
+		width: 25%;
+
+		background-color: #fff;
+
+		border: 1px solid #f5f5f5;
+
+		vertical-align: middle;
+		text-align: center;
+
+		img {
+			display: block;
+			width: 100%;
+		}
+	}
+}
+
+@media only screen and (max-width : 767px) {
+	#clients .page-section-header .page-section-icon {
+		@include setIcon(60px);
+	}
+
+	#clients-logo-list li {
+		width: 50%;
+	}
+}

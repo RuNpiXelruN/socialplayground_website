@@ -1,0 +1,297 @@
+/****************************
+Menu Style
+****************************/
+@mixin logoSize($menuHeight, $menuMargin) {
+	height: $menuHeight - 2 * $menuMargin;
+	margin: $menuMargin 40px;
+}
+
+#logo-link {
+	@include inline-block();
+	vertical-align: middle;
+	@include logoSize(111px, 18px);
+
+	// @include opacity(0.5);
+
+	// @include transition(opacity 0.4s ease);
+
+	// &:hover,
+	// &:focus {
+	// 	@include opacity(1);
+	// }
+
+	img {
+		width: auto;
+		height: 100%;
+	}
+}
+
+@mixin linkColor($color) {
+	color: $color;
+
+	&:hover,
+	&:focus,
+	&.active {
+		border-color: $color;
+	}
+}
+
+#link-home {
+	@include linkColor($orange);
+}
+
+#link-toys {
+	@include linkColor($blue);
+}
+
+#link-past-events {
+	@include linkColor($pink);
+}
+
+#link-contact {
+	@include linkColor($green);
+}
+
+#link-partners {
+	@include linkColor($lightOrange);
+}
+
+#menu-main {
+	$listMargin: 29px;
+
+	padding: 29px 0 0 0;
+	margin-left: 4%;
+	@include inline-block();
+
+	font-size: em(16px);
+	line-height: 1;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	vertical-align: middle;
+	@include base-font-bold();
+
+	li {
+		margin-left: $listMargin;
+		margin-bottom: $listMargin;
+		@include inline-block();
+
+		&:first-child {
+			margin-left: 0;
+		}
+
+		a {
+			padding: 14px 25px;
+			@include inline-block();
+
+			border: 4px solid transparent;
+
+			@include transition(color 0.4s ease, border-color 0.4s ease);
+		}
+	}
+}
+
+#menu {
+	position: absolute;
+	z-index: 999;
+	left: 0;
+	right: 0;
+	top: 0;
+
+	border-bottom: 1px solid rgba(#fff, 0.1);
+
+	@include translateZ(0);
+	@include transition(background-color 0.4s ease, height 0.4s ease);
+
+	&.fixed {
+		position: fixed;
+
+		background-color: rgba(#000, 0.8);
+	}
+
+	&.visible {
+		background-color: rgba(#000, 0.8);
+	}
+}
+
+.lt-ie9 {
+	#menu.fixed,
+	#menu.visible {
+		@include ie-rgba(#000, 0.2);
+	}
+}
+
+#menu-toggle-wrapper {
+	position: absolute;
+	z-index: 999;
+	top: 0;
+	right: 0;
+
+	display: none;
+}
+
+#menu-toggle {
+	@include box-sizing(content-box);
+	width: 32px;
+	padding: 10px;
+	margin-top: 20px;
+
+	background: none;
+
+	border: 0;
+
+	cursor: pointer;
+
+	@include opacity(0.8);
+	@include transition(all 0.4s ease);
+
+	&:hover {
+		@include opacity(1);
+	}
+
+	.bar {
+		display: block;
+		width: 100%;
+		height: 4px;
+		margin-top: 4px;
+
+		background-color: #fff;
+	}
+}
+
+/****************************
+Responsive Menu Style
+****************************/
+@mixin gt1440 {
+	#menu-main {
+		position: absolute;
+		z-index: 998;
+		left: 0;
+		right: 0;
+		top: 0;
+		margin-left: 0;
+
+		text-align: center;
+	}
+
+	#logo-link {
+		position: relative;
+		z-index: 999;
+	}
+}
+@media only screen and (min-width : 1440px) {
+	@include gt1440;
+}
+
+@mixin lt1140 {
+	#logo-link {
+		@include logoSize(82px, 14px);
+	}
+
+	#menu-main {
+		padding-top: 16px;
+
+		font-size: em(14px);
+
+		li {
+			margin-bottom: 16px;
+			margin-left: 16px;
+		}
+	}
+}
+@media only screen and (max-width : 1140px) {
+	@include lt1140;
+}
+
+@mixin lt990 {
+	#menu-main {
+		display: block;
+		margin-left: 0;
+	}
+
+	#menu {
+		height: 82px;
+		overflow: hidden;
+
+		text-align: center;
+
+		&.visible {
+			height: 165px;
+		}
+
+	}
+
+	#menu-toggle-wrapper {
+		display: block;
+	}
+}
+@media only screen and (max-width : 990px) {
+	@include lt990;
+}
+
+@mixin lt767 {
+	#menu-main {
+		li {
+			display: block;
+			margin-left: 0;
+		}
+	}
+
+	#menu {
+		&.visible {
+			height: 430px;
+		}
+	}
+}
+@media only screen and (max-width : 767px) {
+	@include lt767;
+}
+
+@mixin lt480 {
+	#logo-link {
+		height: 40px;
+
+		margin: 10px;
+	}
+
+	#menu {
+		height: 60px;
+	}
+
+	#menu-toggle {
+		margin-top: 8px;
+	}
+}
+@media only screen and (max-height : 480px) {
+	@include lt480;
+}
+
+@mixin lt430 {
+	#menu.visible {
+		height: 100%;
+		overflow: auto;
+	}
+}
+@media only screen and (max-height : 430px) {
+	@include lt430;
+}
+
+.lt-ie9 {
+	.gt1440 {
+		@include gt1440;
+	}
+	.lt1140 {
+		@include lt1140;
+	}
+	.lt990 {
+		@include lt990;
+	}
+	.lt767 {
+		@include lt767;
+	}
+	.lt480 {
+		@include lt480;
+	}
+	.lt430 {
+		@include lt430;
+	}
+}

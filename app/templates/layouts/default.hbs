@@ -1,0 +1,115 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>{{title}} - Social Playground</title>
+		<meta name="description" content="{{desc}}">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+		<base href="/">
+		<!--[if IE]><script type="text/javascript">
+			// Fix for IE ignoring relative base tags.
+			(function() {
+				var baseTag = document.getElementsByTagName('base')[0];
+				baseTag.href = baseTag.href;
+			})();
+		</script><![endif]-->
+		<link rel="shortcut icon" href="images/favicon.png" type="image/png">
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<!-- build:css({.tmp,app}) styles/main.css -->
+		<link rel="stylesheet" href="styles/main.css">
+		<!-- endbuild -->
+		<!-- build:js({.tmp,app}) scripts/vendor/modernizr.js -->
+		<script src="bower_components/modernizr/modernizr.js"></script>
+		<!-- endbuild -->
+	</head>
+
+	<body data-ng-app="socialPlaygroundWebsiteApp" data-ng-controller="MainCtrl" data-ng-class="{gt1440: window.width >= 1440, lt1140: window.width <= 1140, lt990: window.width <= 990, lt767: window.width <= 767, lt480: window.height <= 480, lt430: window.height <= 430, lt400: window.width <= 400, ios: device.ios}">
+		<!--[if lt IE 7]>
+		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+
+		<div id="main" data-page class="{{templateClass }}">
+			<h1 class="visuallyhidden">Social Playground</h1>
+
+			<nav id="menu" {{ngMenu}} data-ng-class="{fixed: window.offsetY >= window.height, visible: menu.visible && window.width < 990}">
+				<h2 class="visuallyhidden">Main Menu</h2>
+
+				<a href="/" id="logo-link">
+					<img src="images/social-playground-logo.svg" data-svg alt="social playground logo">
+				</a>
+
+				<ul id="menu-main">
+					<li>
+						<a href="/" id="link-home" class="{{homeActive}}">Home</a>
+					</li><li>
+						<a href="/#toys" id="link-toys" class="{{toysActive}}">Toys</a>
+					</li><li>
+						<a href="/#past-events" id="link-past-events">Past Events</a>
+					</li><li>
+						<a href="/#contact" id="link-contact">Contact</a>
+					</li><li>
+						<a href="/#partners" id="link-partners">Partners</a>
+					</li>
+				</ul>
+
+				<div id="menu-toggle-wrapper">
+					<button id="menu-toggle" data-ng-click="menu.visible = !menu.visible">
+						<span class="bar"></span><span class="bar"></span><span class="bar"></span>
+						<span class="visuallyhidden">Menu</span>
+					</button>
+				</div>
+			</nav>
+			{{> body }}
+
+			<footer id="main-footer">
+				&copy; COPYRIGHT 2014 <a href="http://www.socialplayground.com.au/" class="main-footer-link">SOCIAL PLAYGROUND</a>.
+			</footer>
+		</div>
+
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-44284951-1');
+			ga('send', 'pageview');
+		</script>
+
+		<!--[if lt IE 9]>
+		<!-- build:js({.tmp,app}) scripts/vendor/lt-ie9.js -->
+		<script src="bower_components/es5-shim/es5-shim.js"></script>
+		<script src="bower_components/json3/lib/json3.min.js"></script>
+		<!-- endbuild -->
+		<![endif]-->
+
+		<!-- build:js({.tmp,app}) scripts/vendor.js -->
+		<!-- bower:js -->
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/tweenlite/TweenLite.min.js"></script>
+		<script src="bower_components/tweenlite-scrollto/ScrollToPlugin.min.js"></script>
+		<script src="bower_components/angular-svg-fallback/js/angular-svg-fallback.js"></script>
+		<script src="bower_components/angular-touch/angular-touch.js"></script>
+		<!-- endbower -->
+		<!-- endbuild -->
+
+		<!-- build:js({.tmp,app}) scripts/scripts.js -->
+		<script src="scripts/app.js"></script>
+		<script src="scripts/controllers/main.js"></script>
+		<script src="scripts/services/param.js"></script>
+		<script src="scripts/services/throttle.js"></script>
+		<script src="scripts/directives/page.js"></script>
+		<script src="scripts/directives/menu.js"></script>
+		<script src="scripts/directives/section.js"></script>
+		<script src="scripts/directives/carousel.js"></script>
+		<script src="scripts/directives/fullHeight.js"></script>
+		<script src="scripts/directives/toggleForm.js"></script>
+		<script src="scripts/directives/placeholder.js"></script>
+		<!-- endbuild -->
+	</body>
+</html>

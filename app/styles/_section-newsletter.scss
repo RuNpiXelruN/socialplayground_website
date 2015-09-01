@@ -1,0 +1,91 @@
+#newsletter {
+	background: $green;
+
+	color: #ffffff;
+	text-align: center;
+
+	.page-section-header {
+		padding-bottom: 30px;
+	}
+}
+
+#signupForm {
+	display: block;
+	padding-bottom: 100px;
+}
+
+
+#email-signupForm {
+	@extend %customInput;
+	
+	width: 410px;
+	padding-right: 160px;
+
+	background-color: #5c7c6c;
+
+	vertical-align: middle;
+
+	&.submitting {
+		width: 480px;
+		padding-right: 230px;
+	}
+
+	&:focus {
+		border-color: darken($green, 30%);
+		box-shadow: 0 0 20px darken($green, 30%);
+	}
+}
+
+#submit-signupForm {
+	padding: 14px 30px;
+	margin: 0;
+
+	vertical-align: middle;
+
+	@include btn-color(#fff, $green);
+}
+
+#inputWrapper-signupForm {
+	position: relative;
+	@include inline-block();
+
+	#submit-signupForm {
+		position: absolute;
+		z-index: 2;
+		top: 14px;
+		right: 12px;
+	}
+}
+
+#error-signupForm,
+#response-signupForm {
+	margin: 40px;
+}
+
+@media only screen and (max-width : 767px) {
+	#inputWrapper-signupForm {
+		width: 80%;
+
+		#submit-signupForm {
+			position: static;
+			margin-top: 20px;
+		}
+	}
+
+	#email-signupForm {
+		width: 100%;
+		padding: 30px 15px;
+
+		text-align: center;
+
+		&.submitting {
+			width: 100%;
+			padding-right: 15px;
+		}
+	}
+
+	#error-signupForm,
+	#response-signupForm {
+		margin: 20px;
+	}
+}

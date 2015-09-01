@@ -1,0 +1,154 @@
+$toyLinkColor: #60d6e8;
+$gray22: #222222;
+
+#toys {
+	.page-section-title {
+		color: $orange;
+	}
+
+	.page-section-subtitle {
+		color: $charcoalText;
+	}
+}
+
+$sectionHeight: 699px;
+.toy {
+	position: relative;
+	height: $sectionHeight;
+
+	background-color: $charcoal;
+
+	text-align: center;
+	vertical-align: middle;
+
+	.inner {
+		position: relative;
+		height: $sectionHeight;
+		overflow: auto;
+	}
+
+	.overlay-content {
+		position: relative;
+		top: 50%;
+		margin-top: -80px;
+		z-index: 3;
+	}
+
+	.overlay,
+	.bg {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 699px;
+	}
+
+	.overlay {
+		z-index: 2;
+
+		background-color: $gray22;
+
+		@include opacity(0.85);
+
+		@include transition(all 0.4s ease);
+	}
+
+	.bg {
+		z-index: 1;
+
+		background-position: center top;
+		background-repeat: no-repeat;
+		background-size: cover;
+
+		@include filter(grayscale(100%));
+
+		@include transition(all 0.4s ease);
+	}
+
+	&:hover,
+	&:active {
+		.overlay {
+			background-color: transparent;
+		}
+
+		.bg {
+			@include filter(none);
+		}
+
+		.toy-link {
+			background-color: #fff;
+
+			color: $blue;
+		}
+	}
+}
+
+.ios {
+	.toy {
+		&:hover,
+		&:active {
+			.overlay {
+				background-color: $gray22;
+			}
+
+			.bg {
+				@include filter(grayscale(100%));
+			}
+
+			.toy-link {
+				background-color: transparent;
+
+				color: #fff;
+			}
+		}
+	}
+}
+
+.toy-title {
+	@include inline-block();
+
+	font-size: em(42px);
+	color: $toyLinkColor;
+	text-transform: uppercase;
+	@include base-font-bold();
+}
+
+.toy-link {
+	@include btn-color(#fff, $toyLinkColor);
+
+	position: relative;
+	top: 75px;
+}
+
+#toy-instagram-printer {
+	.bg {
+		background-image: url('/images/instagram-printer.jpg');
+	}
+}
+
+#toy-live-feed {
+	.bg {
+		background-image: url('/images/live-feed.jpg');
+	}
+
+	border-left: 1px solid #353535;
+}
+
+@media only screen and (max-width : 767px) {
+	#toy-live-feed {
+		border-left: 0;
+	}
+}
+
+@media only screen and (max-height : 480px) {
+	.toy {
+		height: 480px;
+
+		.inner,
+		.overlay,
+		.bg {
+			height: 480px;
+		}
+	}
+}
+

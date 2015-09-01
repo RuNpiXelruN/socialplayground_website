@@ -1,0 +1,153 @@
+$charcoal2c: #2c2c2c;
+
+#partners {
+	overflow: hidden;
+	padding-bottom: 100px;
+
+	background: $charcoal2c;
+
+	color: #fff;
+
+	.page-section-title{
+		color: $lightOrange;
+	}
+
+	.page-section-header {
+		padding-bottom: 40px;
+	}
+}
+
+#contactForm-toggle {
+	@include btn-color($lightOrange, $charcoal2c);
+	margin: 0;
+
+	&.hide {
+		@include opacity(0);
+	}
+}
+
+#contactForm-close {
+	@include btn-color($lightOrange, $charcoal2c);
+	margin: 0;
+
+	padding: 7px;
+
+	@include border-radius(50%);
+	
+	$iconSize: 20px;
+	font-size: em($iconSize);
+	line-height: 1;
+
+	.icon-close {
+		width: $iconSize;
+		height: $iconSize;
+		@include inline-block();
+
+		font-size: em(18px);
+	}
+}
+
+#contactForm-control {
+	height: 52px;
+}
+
+#message {
+	height: 155px;
+}
+
+#contactForm {
+	width: 600px;
+	margin: auto;
+
+	text-align: center;
+
+	label {
+		@extend %visuallyhidden;
+	}
+
+	@include customInput($lightOrange);
+
+	$gutter: 10;
+
+	.input-col {
+		width: 100%;
+		padding-left: $gutter * 1px;
+		@include inline-block();
+		@include box-sizing(border-box);
+	}
+
+	.input-row {
+		margin-bottom: $gutter * 1px;
+		margin-left: -$gutter * 1px;
+	}
+
+	.input-row-2cols {
+		.input-col {
+			width: 50%;
+		}
+	}
+}
+
+#contactForm-wrapper {
+	max-height: 0;
+	overflow: hidden;
+
+	@include transition(max-height 0.4s ease);
+
+	&.visible {
+		max-height: 770px;
+		overflow: visible;
+	}
+}
+
+.no-js {
+	#contactForm-wrapper {
+		height: auto;
+		overflow: visible;
+	}
+}
+
+#submit-contactForm {
+	@include btn-color($lightOrange, $charcoal2c);
+	margin-top: 40px;
+}
+
+#error-contactForm,
+#response-contactForm {
+	margin: 0 20px;
+
+	font-size: em(16px);
+	color: $lightOrange;
+
+	.error-message {
+		margin-top: 20px;
+	}
+}
+
+@media only screen and (max-width : 767px) {
+	#contactForm {
+		width: 100%;
+
+		input[type="text"],
+		input[type="email"],
+		textarea {
+			width: 80%;
+			margin-bottom: 10px;
+		}
+
+		.input-row {
+			margin-left: 0;
+			margin-bottom: 0;
+		}
+
+		.input-col {
+			display: block;
+			padding: 0;
+			margin: 0;
+		}
+
+		.input-row-2cols .input-col {
+			width: 100%;
+		}
+	}
+}

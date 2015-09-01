@@ -1,0 +1,123 @@
+#contact {
+	background: #353535;
+
+	color: #ffffff;
+}
+
+$borderColor: #222222;
+
+.contact-address {
+	padding: 100px 0;
+
+	border-top: 1px solid $borderColor;
+
+	text-align: center;
+
+	+ .contact-address{
+		border-left: 1px solid $borderColor;
+	}
+}
+
+.address-country {
+	font-size: em(42px);
+	color: $green;
+}
+
+.address-country,
+.address-city {
+	margin-bottom: 40px;
+}
+
+.address-details {
+	@include inline-block();
+
+	text-align: left;
+	line-height: 1.5;
+
+	color: $charcoalText;
+
+	a {
+		position: relative;
+		left: 0;
+		top: 0;
+
+		display: block;
+		padding-left: 40px;
+
+		color: $charcoalText;
+
+		&:hover {
+			color: #fff;
+		}
+
+		@include transition(color 0.4s ease);
+
+		.address-detail-icon {
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	}
+}
+
+.address-property {
+	@extend %visuallyhidden;
+}
+
+.address-detail-icon {
+	font-size: em(30px);
+	color: $green;
+	text-indent: 0;
+}
+
+.address-detail {
+	margin-bottom: 40px;
+}
+
+.address-detail-email-link{
+	padding-bottom: 2px;
+
+	&:hover {
+		.address-detail-text {
+			border-color: #fff;
+		}
+	}
+
+	.address-detail-text {
+		border-bottom: 1px solid $charcoalText;
+
+		@include transition(border-color 0.4s ease);
+	}
+}
+
+@media only screen and (max-width : 767px) {
+	.address-country {
+		font-size: 6vw;
+	}
+
+	.address-city {
+		font-size: 5vw;
+	}
+
+	.contact-address {
+		padding: 50px 0;
+	}
+
+	.contact-address + .contact-address {
+		border-left: 0;
+		border-top: 1px solid #222222;
+	}
+}
+
+@media only screen and (max-width : 479px) {
+	.address-detail-text {
+		font-size: 4vw;
+	}
+
+	#contact {
+		.page-section-title {
+			margin: 20px;
+		}
+	}
+}
+

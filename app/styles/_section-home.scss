@@ -1,0 +1,190 @@
+#menu-social {
+	position: absolute;
+	z-index: 999;
+	top: 220px;
+	right: 0;
+
+	li {
+		margin-bottom: 1px;
+	}
+
+	a {
+		$blockSize: 40px;
+		display: block;
+		width: $blockSize;
+		height: $blockSize;
+
+		background-color: rgba(#000, 0.2);
+
+		font-size: em($blockSize/2);
+		line-height: $blockSize;
+		color: #fff;
+		text-align: center;
+
+		@include transition(background-color 0.4s ease, color 0.4s ease);
+	}
+
+	.icon-facebook {
+		&:hover {
+			background-color: $facebook;
+		}
+	}
+
+	.icon-twitter {
+		&:hover {
+			background-color: $twitter;
+		}
+	}
+
+	.icon-instagram {
+		&:hover {
+			background-color: $orange;
+		}
+	}
+}
+
+.lt-ie9 {
+	#menu-social a {
+		 @include ie-rgba(#000, 0.2);
+	}
+}
+
+#home-carousel {
+	.item-01 {
+		background-image: url('/images/home-carousel/carousel01.jpg');
+	}
+
+	.item-02 {
+		background-image: url('/images/home-carousel/carousel02.jpg');
+	}
+}
+
+#instagram-printer-carousel {
+	.item-01 {
+		background-image: url('/images/instagram-printer-carousel/carousel01.jpg');
+	}
+}
+
+#live-feed-carousel {
+	.item-01 {
+		background-image: url('/images/live-feed-carousel/carousel01.jpg');
+	}
+}
+
+#home {
+	position: relative;
+	height: 100%;
+
+	.carousel-wrapper {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+@mixin highres {
+	#home-carousel {
+		.item-01 {
+			background-image: url('/images/home-carousel/carousel01-big.jpg');
+		}
+
+		.item-02 {
+			background-image: url('/images/home-carousel/carousel02-big.jpg');
+		}
+	}
+
+	#instagram-printer-carousel {
+		.item-01 {
+			background-image: url('/images/instagram-printer-carousel/carousel01-big.jpg');
+		}
+	}
+
+	#live-feed-carousel {
+		.item-01 {
+			background-image: url('/images/live-feed-carousel/carousel01-big.jpg');
+		}
+	}
+}
+
+@media only screen and (min-width: 1401px) {
+	@include highres;
+}
+
+@media only screen and (max-height : 789px) {
+	@include highres;
+}
+
+@media only screen and (max-width: 767px) and (max-height : 567px) {
+	#home {
+		height: 567px;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	#menu {
+		text-align: left;
+
+		&.fixed {
+			text-align: center;
+		}
+	}
+
+	#menu-main {
+		text-align: center;
+	}
+
+	#logo-link {
+		height: 42px;
+		margin: 20px 14px;
+	}
+
+	#menu-social {
+		left: 50%;
+		right: auto;
+		top: 24px;
+
+		margin-left: -52px;
+
+		li {
+			display: inline-block;
+			margin: 0 0 0 10px;
+		}
+
+		a {
+			background-color: transparent;
+		}
+
+		.icon-facebook:hover {
+			color: $facebook;
+
+			&:hover {
+				background-color: transparent;
+			}
+		}
+
+		.icon-twitter:hover {
+			color: $twitter;
+
+			&:hover {
+				background-color: transparent;
+			}
+		}
+
+		.icon-instagram:hover {
+			color: $orange;
+
+			&:hover {
+				background-color: transparent;
+			}
+		}
+	}
+}
+
+@media only screen and (max-height : 480px) {
+	#logo-link {
+		margin: 9px;
+	}
+
+	#menu-social {
+		top: 12px;
+	}
+}
